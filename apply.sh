@@ -48,7 +48,11 @@ gsettings set "$schema" click-action 'cycle-windows'
 gsettings set org.gnome.shell.keybindings show-screenshot-ui "['<Super><Shift>s', '<Super><Shift>4', '<Super><Shift>3', 'Print']"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['XF86Keyboard']"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Shift>XF86Keyboard']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys search "['<Super>space']"
+if test -x "$HOME/.local/bin/whitesur-spotlight"; then
+  gsettings set org.gnome.settings-daemon.plugins.media-keys search "['XF86Search']"
+else
+  gsettings set org.gnome.settings-daemon.plugins.media-keys search "['<Super>space']"
+fi
 gsettings set org.gnome.desktop.wm.keybindings minimize "['<Super>m', '<Super>h']"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super>w']"
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Control>Up']"
