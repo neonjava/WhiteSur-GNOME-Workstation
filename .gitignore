@@ -1,0 +1,15 @@
+.cache/
+backups/
+*.dconf
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.log
+*.local
+.env
+*.key
+*.pem
+*.p12
+*.sqlite
+*.db
