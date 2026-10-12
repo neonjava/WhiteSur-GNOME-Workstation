@@ -10,7 +10,7 @@ A small Fedora GNOME 50 setup for a Mac-inspired desktop. It uses the upstream [
 - Optional Ghostty launcher with a separate theme and Mac-style terminal shortcuts. The regular Ghostty config is untouched.
 - Spotlight-style application finder using Fedora's Rofi and `Super+Space`.
 - Optional top-bar File/Edit/View menus using [Orbit Global Menu](https://github.com/Unmade760/orbit-global-menu) on GNOME 50.
-- Optional light translucent top bar with [Blur my Shell](https://github.com/aunetx/blur-my-shell), scoped to GNOME Shell. The dark application theme stays in place.
+- Optional transparent blurred top bar with [Blur my Shell](https://github.com/aunetx/blur-my-shell), scoped to GNOME Shell. The dark application theme stays in place.
 - Optional **VS Code (WhiteSur)** launcher with its own user-data directory and a hidden in-window menu. It opens the same project files and uses the existing extensions directory; the original VS Code settings remain unchanged.
 
 The launcher uses Rofi's XCB backend through GNOME's XWayland because GNOME Wayland does not provide the layer-shell protocol Rofi's native Wayland backend requires.
@@ -25,7 +25,7 @@ GNOME itself does not provide a macOS global application menu. Orbit supplies a 
 4. Install Fedora's `rofi` package, then run `./install-launcher.sh` for a Spotlight-style app finder on `Super+Space`.
 5. Run `./install-global-menu.sh` to stage the top-bar menu extension. It uses a pinned upstream commit and does not install the optional menu daemon. **Log out and back in** to load it on GNOME Wayland.
 6. Optional: run `./install-ghostty-profile.sh` and pin **Ghostty (WhiteSur)** to the dock. It keeps the existing Ghostty config intact. Run `./install-vscode-launcher.sh` and open **VS Code (WhiteSur)** to hide VS Code's duplicate in-window menu in GNOME. An already running VS Code window will retain its current menu until it is reopened through this launcher. The isolated instance has separate editor state and sign-ins.
-7. Run `./install-glass-panel.sh` for the light translucent top bar and blur. **Log out and back into GNOME** to load the new Blur my Shell extension.
+7. Run `./install-glass-panel.sh` for the transparent top bar and blur. **Log out and back into GNOME** to load the new Blur my Shell extension. Until then, the bar can be transparent but not blurred.
 8. Run `./verify.sh` to inspect settings. Test the menus, app finder, screenshot, and touchpad gestures with your physical keyboard and touchpad.
 
 The scripts make no disk partition, bootloader, or GDM changes. They do not remove other desktop environments. `./rollback.sh` restores the GNOME settings captured before the most recent `apply.sh`; it does not uninstall packages or the upstream theme.

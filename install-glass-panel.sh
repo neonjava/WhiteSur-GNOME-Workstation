@@ -28,25 +28,25 @@ marker = '/* WhiteSur GNOME glass panel overrides */'
 css = path.read_text().split(marker)[0].rstrip()
 css += '\n\n' + marker + '''
 #panel, #panel.light-panel {
-  background-color: rgba(244, 247, 252, 0.48) !important;
-  color: #182034 !important;
-  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.52) !important;
+  background-color: transparent !important;
+  color: #f7f8fc !important;
+  box-shadow: none !important;
 }
 #panel .panel-button,
 #panel .panel-button StLabel,
 #panel .panel-button .system-status-icon,
 #panel .panel-button .app-menu-icon > StIcon,
 #panel .panel-button .popup-menu-arrow {
-  color: #182034 !important;
-  text-shadow: none !important;
-  icon-shadow: none !important;
+  color: #f7f8fc !important;
+  text-shadow: 0 1px 2px rgba(20, 25, 45, 0.45) !important;
+  icon-shadow: 0 1px 2px rgba(20, 25, 45, 0.45) !important;
 }
 #panel .panel-button:hover,
 #panel .panel-button:focus,
 #panel .panel-button:checked,
 #panel .panel-button:active {
-  background-color: rgba(255, 255, 255, 0.38) !important;
-  color: #101827 !important;
+  background-color: rgba(255, 255, 255, 0.17) !important;
+  color: #ffffff !important;
 }
 #panel .panel-corner {
   -panel-corner-background-color: transparent;
@@ -64,7 +64,7 @@ if ! test -f "$extension_dir/metadata.json"; then
 fi
 
 schema_dir="$extension_dir/schemas"
-GSETTINGS_SCHEMA_DIR="$schema_dir" gsettings set org.gnome.shell.extensions.blur-my-shell.panel style-panel 1
+GSETTINGS_SCHEMA_DIR="$schema_dir" gsettings set org.gnome.shell.extensions.blur-my-shell.panel style-panel 0
 GSETTINGS_SCHEMA_DIR="$schema_dir" gsettings set org.gnome.shell.extensions.blur-my-shell.panel blur true
 GSETTINGS_SCHEMA_DIR="$schema_dir" gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background true
 GSETTINGS_SCHEMA_DIR="$schema_dir" gsettings set org.gnome.shell.extensions.blur-my-shell.panel force-light-text false
@@ -82,4 +82,4 @@ if uuid not in extensions:
     subprocess.run(['gsettings', 'set', schema, key, str(extensions)], check=True)
 PY
 gsettings set org.gnome.shell.extensions.user-theme name 'WhiteSur-GNOME50-Glass'
-echo 'White glass panel theme selected. Log out and back into GNOME to load the new blur extension.'
+echo 'Transparent panel theme selected. Log out and back into GNOME to load the blur extension.'
