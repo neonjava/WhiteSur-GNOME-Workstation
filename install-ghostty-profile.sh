@@ -15,18 +15,15 @@ if test -f "$HOME/.config/ghostty/config" && ! test -f "$config_dir/config"; the
   done < "$HOME/.config/ghostty/config" > "$config_dir/config"
 fi
 if ! test -f "$config_dir/config"; then : > "$config_dir/config"; fi
-if ! grep -q '^# WhiteSur GNOME profile$' "$config_dir/config"; then
-  cat >> "$config_dir/config" <<'EOF'
-
-# WhiteSur GNOME profile
-theme = Catppuccin Mocha
-keybind = super+c=copy_to_clipboard:mixed
-keybind = super+v=paste_from_clipboard
-keybind = super+t=new_tab
-keybind = super+n=new_window
-keybind = super+q=quit
-EOF
-fi
+for line in \
+  'theme = Catppuccin Mocha' \
+  'keybind = super+c=copy_to_clipboard:mixed' \
+  'keybind = super+v=paste_from_clipboard' \
+  'keybind = super+t=new_tab' \
+  'keybind = super+n=new_window' \
+  'keybind = super+q=quit'; do
+  grep -Fxq "$line" "$config_dir/config" || printf '%s\n' "$line" >> "$config_dir/config"
+done
 cat > "$launcher" <<'EOF'
 #!/bin/sh
 export XDG_CONFIG_HOME="$HOME/.config/gnome-whitesur"
