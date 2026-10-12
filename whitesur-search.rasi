@@ -6,10 +6,9 @@ configuration {
 
 * {
     font: "Cantarell 15";
-    background: #20212ded;
-    foreground: #f3f4f7ff;
-    selected: #4c76a9dd;
-    border-color: #ffffff33;
+    background-color: #222633ff;
+    text-color: #f4f5f8ff;
+    border-color: #7d849955;
 }
 
 window {
@@ -17,21 +16,22 @@ window {
     anchor: center;
     width: 640px;
     border: 1px;
-    border-radius: 18px;
-    padding: 18px;
-    background-color: @background;
+    border-radius: 20px;
+    padding: 16px;
+    background-color: #222633ff;
 }
 
 mainbox {
     children: [ inputbar, listview ];
     spacing: 12px;
+    background-color: #222633ff;
 }
 
 inputbar {
     children: [ prompt, entry ];
     padding: 12px;
     border-radius: 11px;
-    background-color: #ffffff12;
+    background-color: #303645ff;
 }
 
 prompt {
@@ -42,8 +42,9 @@ prompt {
 
 entry {
     placeholder: "Search applications";
-    text-color: @foreground;
-    background-color: transparent;
+    placeholder-color: #aeb5c5ff;
+    text-color: #f4f5f8ff;
+    background-color: #303645ff;
 }
 
 listview {
@@ -52,23 +53,29 @@ listview {
     fixed-height: false;
     spacing: 3px;
     scrollbar: false;
+    background-color: #222633ff;
 }
 
 element {
     padding: 10px;
     spacing: 10px;
     border-radius: 9px;
+    background-color: #222633ff;
+    text-color: #f4f5f8ff;
 }
 
 element selected {
-    background-color: @selected;
-}
-
-element-icon {
-    size: 28px;
+    background-color: #5575a5ff;
+    text-color: #ffffffff;
 }
 
 element-text {
     vertical-align: 0.5;
-    text-color: @foreground;
+    text-color: inherit;
+    background-color: transparent;
+}
+
+element-icon {
+    size: 28px;
+    background-color: transparent;
 }
