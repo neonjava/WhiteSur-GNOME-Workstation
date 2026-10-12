@@ -28,9 +28,9 @@ marker = '/* WhiteSur GNOME glass panel overrides */'
 css = path.read_text().split(marker)[0].rstrip()
 css += '\n\n' + marker + '''
 #panel, #panel.light-panel {
-  background-color: transparent !important;
+  background-color: rgba(15, 22, 39, 0.16) !important;
   color: #f7f8fc !important;
-  box-shadow: none !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.16), inset 0 -1px rgba(255, 255, 255, 0.08) !important;
 }
 #panel .panel-button,
 #panel .panel-button StLabel,
@@ -66,7 +66,7 @@ fi
 schema_dir="$extension_dir/schemas"
 GSETTINGS_SCHEMA_DIR="$schema_dir" gsettings set org.gnome.shell.extensions.blur-my-shell.panel style-panel 0
 GSETTINGS_SCHEMA_DIR="$schema_dir" gsettings set org.gnome.shell.extensions.blur-my-shell.panel blur true
-GSETTINGS_SCHEMA_DIR="$schema_dir" gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background true
+GSETTINGS_SCHEMA_DIR="$schema_dir" gsettings set org.gnome.shell.extensions.blur-my-shell.panel override-background false
 GSETTINGS_SCHEMA_DIR="$schema_dir" gsettings set org.gnome.shell.extensions.blur-my-shell.panel force-light-text false
 python3 - <<'PY'
 import ast
@@ -82,4 +82,4 @@ if uuid not in extensions:
     subprocess.run(['gsettings', 'set', schema, key, str(extensions)], check=True)
 PY
 gsettings set org.gnome.shell.extensions.user-theme name 'WhiteSur-GNOME50-Glass'
-echo 'Transparent panel theme selected. Log out and back into GNOME to load the blur extension.'
+echo 'Subtly translucent panel theme selected. Log out and back into GNOME to load the blur extension.'
